@@ -7,3 +7,92 @@
 @import "functions";
 @import "mixins";
 @import "loader";*/
+*{
+  box-sizing: border-box;
+}
+$react-color: #61dafb;
+
+#application-content{
+  header{
+    background-color: $react-color;
+    height: 13rem;
+    color: white;
+  
+    h1{
+      
+    }
+    h3{
+      color: rgba(white, 0.5);
+    }
+    .filters{
+      @include flexbox;
+      input{
+        color: black;
+      }
+      #filter-packages{
+        @include flex(1);
+        height: 3rem;
+      }
+      #page-limit{
+        text-align: center;
+        margin-left: 1rem;
+        width: 5rem;
+      }
+    }
+  }
+  #content{
+    table{
+      width: 100%;
+      
+      td,th{
+        padding: 10px;
+      }
+      thead{
+        tr{
+          border-bottom: 2px solid #ddd;
+        }
+        th{
+          text-align: left;
+        }
+        .package-updated-at{
+          width: 10rem;
+        }
+      }
+      tbody{
+        tr{
+          border-bottom: 1px solid #ddd;
+          cursor: pointer;
+
+          td{
+            @include transition(background-color 0.3s ease);
+          }
+          &:hover{
+            td{
+              background-color: rgba($react-color, 0.5);
+            }
+          }
+        }
+      }
+      .package-name{
+        color: $react-color;
+        font-size: 18px;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+      }
+      .package-description{
+        color: rgba(black, 0.8);
+      }
+    }
+  }
+  header, #content{
+    padding: 1rem;
+  }
+  footer{
+    text-align: center;
+    padding-bottom: 1rem;
+    button{
+      width: 10rem;
+      text-align: center;
+    }
+  }
+}

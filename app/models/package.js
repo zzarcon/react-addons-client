@@ -10,4 +10,8 @@ export default DS.Model.extend({
   url: attr('string'),
   version: attr('string'),
   words: attr('string'),
+
+  timeAgo: function() {
+    return moment(this.get('time')).fromNow();
+  }.property('time')
 });

@@ -21,7 +21,7 @@ export default Ember.ArrayController.extend({
     var init = this.get('page') * this.get('limitPerPage');
     var end = init + this.get('limitPerPage');
 
-    return this.get('filteredContent').slice(init, end);
+    return this.get('filteredContent').sortBy('time').reverse().slice(init, end);
   }.property('filteredContent', 'limitPerPage', 'page'),
 
   onQueryChange: function() {
@@ -40,8 +40,8 @@ export default Ember.ArrayController.extend({
       this.set('page', page);
     },
 
-    openUrl: function(name) {
-      window.open("https://www.npmjs.com/package/" + name, "_blank");
+    openUrl: function(url) {
+      window.open(url, "_blank");
     }
   }
 });

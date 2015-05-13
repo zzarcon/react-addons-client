@@ -13,16 +13,19 @@
 $react-color: #61dafb;
 
 #application-content{
+  .center-text{
+    text-align: center !important;
+  }
   header{
     background-color: $react-color;
     height: 13rem;
     color: white;
-  
+
     h1{
-      
+
     }
     h3{
-      color: rgba(white, 0.5);
+      color: rgba(white, 0.7);
     }
     .filters{
       @include flexbox;
@@ -43,7 +46,7 @@ $react-color: #61dafb;
   #content{
     table{
       width: 100%;
-      
+
       td,th{
         padding: 10px;
       }
@@ -52,7 +55,11 @@ $react-color: #61dafb;
           border-bottom: 2px solid #ddd;
         }
         th{
-          text-align: left;
+          text-align: center;
+
+          &.package-name{
+            text-align: left;
+          }
         }
         .package-updated-at{
           width: 10rem;
@@ -70,6 +77,14 @@ $react-color: #61dafb;
             td{
               background-color: rgba($react-color, 0.5);
             }
+          }
+        }
+        .maintainer-name{
+          text-transform: capitalize;
+          color: $react-color;
+
+          &:hover{
+            text-decoration: underline;
           }
         }
       }

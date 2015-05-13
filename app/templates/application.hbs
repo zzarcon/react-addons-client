@@ -1,6 +1,6 @@
 <header>
   <h1>React Addons</h1>
-  <h3>{{filteredContent.length}} Packages</h3>
+  <h3>{{filteredContent.length}} Components</h3>
   <div class="filters">
     {{input id="filter-packages" value=query placeholder="Filter packages"}}
     {{input id="page-limit" value=limitPerPage placeholder="Page limit"}}
@@ -14,21 +14,27 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th class="package-name">Name</th>
+        <th>Mantainer</th>
+        <th>Version</th>
         <th class="package-updated-at">Updated</th>
       </tr>
     </thead>
     <tbody>
       {{#each package in currentContent}}
-        <tr {{action "openUrl" package.name}}>
+        <tr {{action "openUrl" package.packageLink}}>
           <td>
             <div class="package-name">{{package.name}}</div>
             <div class="package-description">{{package.description}}</div>
           </td>
-          <td>{{package.timeAgo}}</td>
+          <td {{action "openUrl" package.maintainerLink bubbles=false}} class="maintainer-name center-text">{{package.maintainer}}</td>
+          <td class="center-text">{{package.version}}</td>
+          <td class="center-text">{{package.timeAgo}}</td>
         </tr>
       {{/each}}
     </tbody>
   </table>
 </div>
+<a href="https://github.com/zzarcon/react-addons-client" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
 {{outlet}}

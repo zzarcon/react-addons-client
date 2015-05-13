@@ -11,6 +11,19 @@ export default DS.Model.extend({
   version: attr('string'),
   words: attr('string'),
 
+  maintainer: function() {
+    var maintainer = this.get('maintainers.firstObject');
+    return maintainer.substr(1, maintainer.length);
+  }.property('maintainers'),
+
+  maintainerLink: function() {
+    return 'https://www.npmjs.com/~' + this.get('maintainer');
+  }.property('maintainer'),
+
+  packageLink: function() {
+    return "https://www.npmjs.com/package/" + this.get('name');
+  }.property('name'),
+
   timeAgo: function() {
     return moment(this.get('time')).fromNow();
   }.property('time')

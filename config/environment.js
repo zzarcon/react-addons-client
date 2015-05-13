@@ -37,7 +37,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.host = "https://react-addons-backend.herokuapp.com";
   }
 
   return ENV;

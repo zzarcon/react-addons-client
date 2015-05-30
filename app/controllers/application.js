@@ -6,6 +6,8 @@ export default Ember.ArrayController.extend({
   limitPerPage: 10,
   query: "",
 
+  isFirstPage: Ember.computed.equal('page', 0),
+
   filteredContent: function() {
     var matchName, matchDescription;
 
@@ -28,16 +30,27 @@ export default Ember.ArrayController.extend({
     this.set('page', 0);
   }.observes('query'),
 
-  isFirstPage: Ember.computed.equal('page', 0),
   isLastPage: function() {
     return ((this.get('page') + 1) * this.get('limitPerPage')) >= this.get('filteredContent.length');
   }.property('page', 'filteredContent.length'),
 
-  actions: {
-    changePage: function(newPage) {
-      var page = typeof newPage === "number" ? newPage : this.get('page') + (newPage === 'next' ? 1 : -1);
+  changePage: function(newPage) {
+    var page = typeof newPage === "number" ? newPage : this.get('page') + (newPage === 'next' ? 1 : -1);
 
-      this.set('page', page);
+    this.set('page', page);
+  },
+
+  actions: {
+    prev: function() {
+      this.changePage("prev");
+    },
+
+    next: function() {
+      this.changePage("next");
+    },
+
+    changePage: function() {
+      this.changePage.apply(this, arguments);
     },
 
     openUrl: function(url) {

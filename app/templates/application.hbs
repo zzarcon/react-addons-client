@@ -2,14 +2,14 @@
   <h1>React Addons</h1>
   <h3>{{filteredContent.length}} Components</h3>
   <div class="filters">
-    {{input id="filter-packages" value=query placeholder="Filter packages"}}
-    {{input id="page-limit" value=limitPerPage placeholder="Page limit"}}
+    {{paper-text id="filter-packages" label="Query" value=query}}
+    {{paper-text id="page-limit" label="Page limit" value=limitPerPage}}
   </div>
 </header>
 <div id="content">
 <footer>
-  <button {{bind-attr disabled="isFirstPage"}} {{action "changePage" "prev"}}>Previous</button>
-  <button {{bind-attr disabled="isLastPage"}} {{action "changePage" "next"}}>Next</button>
+  {{#paper-button raised=true classNames="md-primary" action="prev"}}Previous{{/paper-button}}
+  {{#paper-button raised=true classNames="md-primary" action="next"}}Next{{/paper-button}}
 </footer>
   <table>
     <thead>

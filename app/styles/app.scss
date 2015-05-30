@@ -1,16 +1,16 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css";
 @import 'bower_components/bourbon/dist/bourbon';
 @import "bower_components/sass-flex-mixin/flex";
-/*@import 'ember-paper';*/
+@import 'ember-paper';
 
-/*@import "config";
-@import "functions";
-@import "mixins";
-@import "loader";*/
+$react-color: #61dafb;
+
 *{
   box-sizing: border-box;
 }
-$react-color: #61dafb;
+body{
+  overflow-x: hidden;
+}
 
 #application-content{
   .center-text{
@@ -29,12 +29,21 @@ $react-color: #61dafb;
     }
     .filters{
       @include flexbox;
+
+      label{
+        color: white;
+      }
       input{
+        border-color: white;
         color: black;
       }
       #filter-packages{
         @include flex(1);
         height: 3rem;
+
+        input{
+          width: 100%;
+        }
       }
       #page-limit{
         text-align: center;
